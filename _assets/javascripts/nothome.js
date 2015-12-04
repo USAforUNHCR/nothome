@@ -6,7 +6,7 @@ var gw = new Groundwork({
   });
 
 $(document).ready(function(){
-
+  $('#download-modal').modal('hide');
   formListener();
 
 })
@@ -15,14 +15,14 @@ function formListener(){
   $('.signup').submit(function(event){
     event.preventDefault();
     var email = $('.signup').find('[type="email"]').val();
-    $('.signup').append("You signed up with email address " + email);
+    showDownload();
   });
 }
 
 function sendData(data){
+  data.source = 'nothome';
   data.tags = (data.tags || {});
   data.tags.send_email = 0;
-  data.source = 'refugeeemojis';
   gw.supporters.create(data)
   .then(function(res){
     console.log(res);
@@ -31,3 +31,7 @@ function sendData(data){
     console.log(res);
   });
 };
+
+function showDownload(){
+  $('#download-modal').modal('show');
+}

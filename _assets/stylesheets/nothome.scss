@@ -1,3 +1,32 @@
 form{
+  font-family: sans-serif;
   margin: auto;
+  margin-top: 20vh;
+  text-align: center;
+  & .submit{
+    margin-top: 2vh;
+    color: white;
+    font-size: 18pt;
+    background-color: blue;
+    border: 1px solid blue;
+    padding: 6px 20px 6px 20px;
+    border-radius: 5px;
+  }
+}
+
+.download{
+  font-family: sans-serif;
+  text-align: center;
+  margin: auto;
+  background: grey;
+  color: white;
+  padding: 15px;
+  border-radius: 25px;
+  text-decoration: none;
+}
+
+#download-modal{
+  margin: auto;
+  margin-top: 20vh;
+  text-align: center;
 }
