@@ -54,7 +54,7 @@ function getAssetId(){
 function assetUrl(aId){
   asset = "";
   if(aId === 'dreidel'){
-    asset = "public/hanukkah/game.pdf"
+    asset = "public/dreidel.pdf"
   }
   baseUrl = "../"
   return baseUrl +  asset;
