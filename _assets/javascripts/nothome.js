@@ -8,7 +8,6 @@ var gw = new Groundwork({
 $(document).ready(function(){
   $('#download-modal').modal('hide');
   formListener();
-
 })
 
 function formListener(){
