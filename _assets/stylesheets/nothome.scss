@@ -30,3 +30,16 @@ form{
   margin-top: 20vh;
   text-align: center;
 }
+
+.modal-body{
+  padding: 2em 0px 2em 0px;
+  & a{
+    transition: all .2s ease-in-out;
+    &:hover{
+      text-decoration: none;
+      color: grey;
+      background: none;
+      border: 1px solid grey;
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 var gw = new Groundwork({
     'api_url': 'https://api.thegroundwork.com',
-    'oauth_client_id': 'pub-un-test.refugeeemojis-test-int-l7z1l8mCLg1kZKp7YNuec4qt8j4VzoP_W8BRfuZxO8VyJhNJGLFiMXSIPeZI5lSD0MKgY_bIcokhUv4grSkKag'
+    'oauth_client_id': 'pub-un-test.not-home-for-the-holidays-test-int-WojenXYI0zi0GOoxBLcNracDZIVOed7yaDPNINIsJd2K4.6Kj4wtMd8r68KSPySG2N61wkvLDGSTIBfn57Uslw'
   });
 
 $(document).ready(function(){
@@ -15,12 +15,19 @@ function formListener(){
   $('.signup').submit(function(event){
     event.preventDefault();
     var email = $('.signup').find('[type="email"]').val();
-    showDownload();
+    var fname = $('.signup').find('[name="fname"]').val();
+    aId = getAssetId();
+    showDownload(aId);
+    data = { 
+      source:'nothome ' + aId,
+      givenName: fname,
+      email: email
+    }
+    sendData(data);
   });
 }
 
 function sendData(data){
-  data.source = 'nothome';
   data.tags = (data.tags || {});
   data.tags.send_email = 0;
   gw.supporters.create(data)
@@ -32,6 +39,24 @@ function sendData(data){
   });
 };
 
-function showDownload(){
-  $('#download-modal').modal('show');
+function showDownload(aId){
+  dModal = $('#download-modal');
+  dModal.find('.download').prop('href',assetUrl(aId));
+  dModal.modal('show');
+}
+
+function getAssetId(){
+  var url = window.location.href;
+  var re =/asset=([^&]*)/;
+  var aId = url.match(re);
+  return aId[1];
+}
+
+function assetUrl(aId){
+  asset = "";
+  if(aId === 'dreidel'){
+    asset = "public/hanukkah/game.pdf"
+  }
+  baseUrl = "../"
+  return baseUrl +  asset;
 }
