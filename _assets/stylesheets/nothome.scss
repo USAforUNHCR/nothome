@@ -10,7 +10,10 @@ form{
   margin-top: 3vh;
   text-align: center;
   & .submit{
-    margin-top: 1vh;
+    margin-top: 3vh;
+    @media screen and (max-width: 600px){
+      margin-top: 2vh;
+    }
     color: white;
     font-size: 12pt;
     background-color: blue;
