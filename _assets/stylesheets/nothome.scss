@@ -1,13 +1,16 @@
 form{
   font-family: 'Abel', sans-serif;
   font-size: 16pt;
+  @media screen and (max-width: 600px){
+    font-size: 13pt;
+  }
   width: 100%;
   max-width: 350px;
   margin: auto;
   margin-top: 3vh;
   text-align: center;
   & .submit{
-    margin-top: 4vh;
+    margin-top: 1vh;
     color: white;
     font-size: 12pt;
     background-color: blue;
