@@ -2,7 +2,7 @@
 
 var gw = new Groundwork({
     'api_url': 'https://api.thegroundwork.com',
-    'oauth_client_id': 'pub-un-test.not-home-for-the-holidays-test-int-WojenXYI0zi0GOoxBLcNracDZIVOed7yaDPNINIsJd2K4.6Kj4wtMd8r68KSPySG2N61wkvLDGSTIBfn57Uslw'
+    'oauth_client_id': 'pub-un.not-home-for-the-holidays-int-uX2UcHAsWiXoOHnZMZPH45z88zdlM831rsoQvcIgOQXZ9kGfmr58RrojjIGq9n6HHGhBJjDaM_EjEslycWVSKg'
   });
 
 $(document).ready(function(){
@@ -27,7 +27,9 @@ function formListener(){
 }
 
 function sendData(data){
+  var source = getSource();
   data.tags = (data.tags || {});
+  source ? data.tags.adSource = source : null; 
   data.tags.send_email = 0;
   gw.supporters.create(data)
   .then(function(res){
@@ -58,4 +60,14 @@ function assetUrl(aId){
   }
   baseUrl = "../"
   return baseUrl +  asset;
+}
+
+function getSource(){
+  var id = /source=(.*)/.exec(document.location.href);
+  if(id){
+  return id[1];
+  }
+  else{
+    return null;
+  }
 }
